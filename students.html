@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Sample html</title>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ <div id="studentList"></div>
+<script>
+var studentList = `{ "students":[
+	{"name":"mayuri"},
+	{"name":"apurva"}]
+}`
+var studentListJSON = JSON.parse(studentList);
+//document.getElementById("studentList").innerHTML = studentListJSON.students[0].name;
+function createStudentList(){
+	for(var i = 0; i<studentListJSON.students.length; i++){
+		var student = document.createElement('div');
+		var deleteBtn =  document.createElement('input');
+		deleteBtn.setAttribute("id","button"+i);
+		deleteBtn.setAttribute("type","button"); 
+		deleteBtn.setAttribute("value", "Delete");
+		deleteBtn.setAttribute("onclick", alert('hello'));
+		student.setAttribute("id","student"+i);
+		console.log(deleteBtn);
+		$("#studentList").append(student);
+		student.innerHTML = studentListJSON.students[i].name;
+		$("#student"+i).append(deleteBtn);
+	}
+}
+createStudentList();
+</script>
+
+</body>
+</html>
